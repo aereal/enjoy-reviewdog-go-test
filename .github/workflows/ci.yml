@@ -18,4 +18,4 @@ jobs:
       - continue-on-error: true
         run: go test -json ./... > out.jsonl
       - name: report test failures
-        run: cat out.jsonl | go run ./cmd/gotest2rdjsonl | reviewdog -f rdjsonl -reporter github-pr-review
+        run: cat out.jsonl | go run ./cmd/gotest2rdjsonl | reviewdog -f rdjsonl -reporter github-pr-review -fail-on-error
