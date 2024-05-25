@@ -14,4 +14,7 @@ jobs:
           go-version-file: go.mod
           cache: true
       - run: go mod download
-      - run: go test ./...
+      - uses: reviewdog/action-setup@v1
+      - run: go test -json ./... > out.jsonl
+      - name: report test failures
+        run: cat out.jsonl | go run ./cmd/gotest2rdjsonl | reviewdog -f rdjsonl -reporter github-pr-review
