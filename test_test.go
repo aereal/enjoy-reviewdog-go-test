@@ -10,7 +10,10 @@ func Test_ng(t *testing.T) {
 	t.Error("failing")
 }
 
-func Test_skip(t *testing.T) {
+func Test_skipnow(t *testing.T) {
 	t.SkipNow()
-	t.Error("maybe skipped")
+}
+
+func Test_skip(t *testing.T) {
+	t.Skip("skipped")
 }
